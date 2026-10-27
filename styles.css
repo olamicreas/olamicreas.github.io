@@ -400,7 +400,7 @@ body {
   stroke-dasharray: 1200;
   stroke-dashoffset: 1200;
   opacity: 0;
-  transition: stroke-dashoffset 1.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: stroke-dashoffset 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out;
 }
 .branch-path.active {
   stroke-dashoffset: 0;
@@ -502,12 +502,21 @@ body {
   z-index: 20;
 }
 
+/* Zero-Reflow Docked Measurement State */
+.hero-floating-hud.docked-measurement .hud-card {
+  transform: translate3d(0, 0, 0) !important;
+  transition: none !important;
+  opacity: 0 !important;
+}
+
 .hud-card {
   position: absolute;
   pointer-events: auto;
-  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
   z-index: 25;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Float 1: Left Top — Name & Core Identity */
@@ -517,11 +526,11 @@ body {
   max-width: 340px;
   padding: 1.35rem 1.5rem;
   opacity: 0;
-  transform: translateX(-140px);
+  transform: translate3d(-38px, 0, 0);
 }
 .hud-left-1.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .badge-pill {
@@ -568,11 +577,11 @@ body {
   max-width: 320px;
   padding: 1.25rem 1.35rem;
   opacity: 0;
-  transform: translateX(140px);
+  transform: translate3d(38px, 0, 0);
 }
 .hud-right-1.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .hud-card-header {
@@ -650,11 +659,11 @@ body {
   max-width: 325px;
   padding: 1.25rem 1.35rem;
   opacity: 0;
-  transform: translateX(-140px);
+  transform: translate3d(-38px, 0, 0);
 }
 .hud-left-2.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 .hud-chip-label {
   font-family: var(--font-mono);
@@ -677,11 +686,11 @@ body {
   max-width: 330px;
   padding: 1.25rem 1.35rem;
   opacity: 0;
-  transform: translateX(140px);
+  transform: translate3d(38px, 0, 0);
 }
 .hud-right-2.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .hud-telemetry-header {
@@ -737,16 +746,151 @@ body {
   padding: 0.55rem 1.15rem;
   border-radius: 9999px;
   opacity: 0;
-  transform: translate(-50%, 60px);
+  transform: translate3d(-50%, 28px, 0);
 }
 .hud-bottom-1.visible {
   opacity: 1;
-  transform: translate(-50%, 0);
+  transform: translate3d(-50%, 0, 0);
 }
 .hero-cta-group {
   display: flex;
   align-items: center;
   gap: 0.65rem;
+}
+
+/* ==========================================================================
+   Hero Animated Scroll Indicator Prompter
+   ========================================================================== */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 4.8rem;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  z-index: 35;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.hero-scroll-indicator.dismissed {
+  opacity: 0;
+  transform: translate3d(-50%, 16px, 0);
+  pointer-events: none;
+}
+
+.indicator-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 0.95rem 0.45rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(10, 13, 24, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(100, 210, 255, 0.35);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.8),
+              0 0 20px -2px rgba(10, 132, 255, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  animation: promptFloat 2.6s infinite ease-in-out;
+}
+
+.indicator-pill:hover {
+  transform: scale(1.04);
+  border-color: rgba(100, 210, 255, 0.6);
+  box-shadow: 0 14px 36px -4px rgba(0, 0, 0, 0.85),
+              0 0 28px rgba(10, 132, 255, 0.45),
+              inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+@keyframes promptFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.indicator-mouse {
+  position: relative;
+  width: 14px;
+  height: 22px;
+  border-radius: 9999px;
+  border: 1.5px solid #64D2FF;
+  display: flex;
+  justify-content: center;
+  padding-top: 3px;
+  flex-shrink: 0;
+}
+
+.indicator-wheel {
+  width: 3px;
+  height: 5px;
+  background: #64D2FF;
+  border-radius: 2px;
+  box-shadow: 0 0 6px #64D2FF;
+  animation: mouseWheelSlide 1.8s infinite ease-in-out;
+}
+
+@keyframes mouseWheelSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+}
+
+.indicator-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.indicator-title {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.indicator-sub {
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  color: #0A84FF;
+  letter-spacing: 0.02em;
+}
+
+.indicator-chevron {
+  display: flex;
+  align-items: center;
+  color: #64D2FF;
+  animation: chevronBob 1.6s infinite ease-in-out;
+}
+
+@keyframes chevronBob {
+  0%, 100% {
+    transform: translateY(-2px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(2px);
+    opacity: 1;
+  }
 }
 
 /* Scrub Controller Bar */
@@ -1716,18 +1860,21 @@ body {
     padding: 0.5rem 0.8rem;
     pointer-events: auto;
     border-radius: 16px;
-    transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   /* Card 1: Top-most (Name & Title) - Prominent & clear of Navbar */
   .hud-left-1 {
     top: clamp(4.2rem, 7.5vh, 4.8rem);
     bottom: auto;
-    transform: translate(calc(-50% - 35px), 0);
+    transform: translate3d(calc(-50% - 22px), 0, 0);
     opacity: 0;
   }
   .hud-left-1.visible {
-    transform: translate(-50%, 0);
+    transform: translate3d(-50%, 0, 0);
     opacity: 1;
   }
   .hero-title {
@@ -1756,11 +1903,11 @@ body {
   .hud-right-1 {
     top: calc(clamp(4.2rem, 7.5vh, 4.8rem) + 74px);
     bottom: auto;
-    transform: translate(calc(-50% + 35px), 0);
+    transform: translate3d(calc(-50% + 22px), 0, 0);
     opacity: 0;
   }
   .hud-right-1.visible {
-    transform: translate(-50%, 0);
+    transform: translate3d(-50%, 0, 0);
     opacity: 1;
   }
   .hud-card-header {
@@ -1780,11 +1927,11 @@ body {
   .hud-left-2 {
     top: calc(50% + 92px);
     bottom: auto;
-    transform: translate(calc(-50% - 35px), 0);
+    transform: translate3d(calc(-50% - 22px), 0, 0);
     opacity: 0;
   }
   .hud-left-2.visible {
-    transform: translate(-50%, 0);
+    transform: translate3d(-50%, 0, 0);
     opacity: 1;
   }
   .hud-chip-label {
@@ -1802,11 +1949,11 @@ body {
   .hud-right-2 {
     top: calc(50% + 180px);
     bottom: auto;
-    transform: translate(calc(-50% + 35px), 0);
+    transform: translate3d(calc(-50% + 22px), 0, 0);
     opacity: 0;
   }
   .hud-right-2.visible {
-    transform: translate(-50%, 0);
+    transform: translate3d(-50%, 0, 0);
     opacity: 1;
   }
   .hud-telemetry-header {
@@ -1838,14 +1985,14 @@ body {
     bottom: auto;
     left: 50%;
     right: auto;
-    transform: translate(-50%, 30px);
+    transform: translate3d(-50%, 20px, 0);
     opacity: 0;
     width: auto;
     max-width: calc(100% - 2.4rem);
     padding: 0.38rem 0.75rem;
   }
   .hud-bottom-1.visible {
-    transform: translate(-50%, 0);
+    transform: translate3d(-50%, 0, 0);
     opacity: 1;
   }
   .hero-cta-group {
@@ -1854,6 +2001,25 @@ body {
   .hero-cta-group .btn {
     padding: 0.4rem 0.75rem;
     font-size: 0.72rem;
+  }
+
+  /* Mobile Scroll Prompter Adaptation */
+  .hero-scroll-indicator {
+    bottom: 3.4rem;
+  }
+  .indicator-pill {
+    padding: 0.38rem 0.8rem 0.38rem 0.65rem;
+    gap: 0.5rem;
+  }
+  .indicator-mouse {
+    width: 12px;
+    height: 19px;
+  }
+  .indicator-title {
+    font-size: 0.68rem;
+  }
+  .indicator-sub {
+    font-size: 0.56rem;
   }
 
   /* Mechanical Claws Adapted for Mobile Multi-Corridor Geometry */
@@ -2022,5 +2188,8 @@ body {
   .hud-bottom-1 {
     top: calc(50% + 210px);
     padding: 0.32rem 0.65rem;
+  }
+  .hero-scroll-indicator {
+    bottom: 2.8rem;
   }
 }

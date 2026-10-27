@@ -1030,14 +1030,14 @@ function initClipboard() {
 }
 
 // ==========================================================================
-// 9. HIGH-PERFORMANCE NATIVE IOS SCROLL REVEAL (PRE-TRIGGERED, ZERO-LAG)
+// 9. HIGH-PERFORMANCE NATIVE IOS SCROLL REVEAL (IN-VIEWPORT FADE-IN ENGINE)
 // ==========================================================================
 function initAOS() {
   const elements = document.querySelectorAll('[data-aos]');
   if (!elements.length) return;
 
-  // Pre-triggers 80px before entering viewport boundary so items are smoothly
-  // visible without empty black waiting gaps.
+  // Triggers once the element has scrolled at least 50px inside the visible viewport,
+  // allowing the user to clearly see and appreciate the silky smooth 1.25s entrance fade.
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1047,14 +1047,20 @@ function initAOS() {
     });
   }, {
     root: null,
-    rootMargin: '0px 0px 80px 0px',
-    threshold: 0.02
+    rootMargin: '0px 0px -50px 0px',
+    threshold: 0.06
   });
 
   elements.forEach(el => {
     const delay = el.getAttribute('data-aos-delay');
     if (delay) {
-      el.style.transitionDelay = `${parseInt(delay, 10) * 0.7}ms`;
+      el.style.transitionDelay = `${parseInt(delay, 10) * 1.2}ms`;
+    }
+    const duration = el.getAttribute('data-aos-duration');
+    if (duration) {
+      const parsedDur = parseInt(duration, 10);
+      const scaledDur = Math.max(Math.round(parsedDur * 1.5), 1250);
+      el.style.transitionDuration = `${scaledDur}ms`;
     }
     observer.observe(el);
   });

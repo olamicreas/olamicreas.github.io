@@ -882,40 +882,52 @@ body {
 }
 
 /* ==========================================================================
-   Apple iOS Spring Entrance Engine (Zero-Lag Pre-Triggered Reveals)
+   Apple iOS Spring Entrance Engine (Smooth, Noticeable In-Viewport Fade)
    ========================================================================== */
 [data-aos] {
   opacity: 0;
-  transform: translateY(26px) scale(0.985);
-  transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(34px);
+  transition: opacity 1.25s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.25s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
   pointer-events: auto;
 }
 
 [data-aos].aos-animate {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 [data-aos="fade-left"] {
-  transform: translateX(-28px);
+  opacity: 0;
+  transform: translateX(-38px);
+  transition: opacity 1.25s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 [data-aos="fade-left"].aos-animate {
+  opacity: 1;
   transform: translateX(0);
 }
 
 [data-aos="fade-right"] {
-  transform: translateX(28px);
+  opacity: 0;
+  transform: translateX(38px);
+  transition: opacity 1.25s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 [data-aos="fade-right"].aos-animate {
+  opacity: 1;
   transform: translateX(0);
 }
 
 [data-aos="zoom-in-up"] {
-  transform: translateY(24px) scale(0.96);
+  opacity: 0;
+  transform: translateY(32px) scale(0.95);
+  transition: opacity 1.25s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 [data-aos="zoom-in-up"].aos-animate {
+  opacity: 1;
   transform: translateY(0) scale(1);
 }
 

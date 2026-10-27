@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdulquayyum Oyedotun | Software & AI Engineer</title>
+  <meta name="description" content="Portfolio of Abdulquayyum Oyekunle Oyedotun — Software & AI Engineer specializing in Python, FastAPI, Django, LangGraph autonomous agents, and Cybersecurity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Ken Burns Background (GPU-accelerated, zero blur repaints) -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="webgl-canvas-container">
+    <canvas id="bg-canvas-3d"></canvas>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar sleek-glass">
+      <a href="#hero" class="brand-monogram">
+        <span class="mono-symbol">&lt;</span>AO<span class="mono-symbol">/&gt;</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="#hero" class="nav-link active">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#skills" class="nav-link">Capabilities</a>
+        <a href="#education" class="nav-link">Education</a>
+      </div>
+
+      <div class="nav-actions">
+        <div class="status-indicator" title="Currently open to high-impact software & AI engineering opportunities">
+          <span class="pulse-dot"></span>
+          <span class="status-text">Available</span>
+        </div>
+        <a href="#contact" class="btn btn-sm btn-primary">Connect</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       PINNED SCROLL 2D-TO-3D HERO SECTION (Spatial Stage + Attached Branch Hands)
+       ========================================================================== -->
+  <section id="hero" class="hero-pinned-track">
+    <div class="hero-sticky-container">
+      
+      <!-- Central Visual Core: hero-3d-stage taking center stage -->
+      <div class="hero-3d-stage">
+        <div class="canvas-3d-wrapper" id="canvas-wrapper-3d">
+          <canvas id="hero-interactive-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Cybernetic Branch Hands SVG Connection Layer -->
+      <svg id="hero-branches-svg" class="hero-branches-svg">
+        <defs>
+          <linearGradient id="branch-cyan-indigo" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.9" />
+            <stop offset="50%" stop-color="#6366f1" stop-opacity="0.85" />
+            <stop offset="100%" stop-color="#a855f7" stop-opacity="0.9" />
+          </linearGradient>
+          <filter id="neon-glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#6366f1" flood-opacity="0.7"/>
+          </filter>
+        </defs>
+        <!-- Dynamic branches attached from centerpiece to floating cards -->
+        <g id="branches-layer">
+          <g class="branch-group" id="branch-0">
+            <path class="branch-path" />
+            <circle class="branch-joint joint-start" />
+            <circle class="branch-joint joint-end" />
+          </g>
+          <g class="branch-group" id="branch-1">
+            <path class="branch-path" />
+            <circle class="branch-joint joint-start" />
+            <circle class="branch-joint joint-end" />
+          </g>
+          <g class="branch-group" id="branch-2">
+            <path class="branch-path" />
+            <circle class="branch-joint joint-start" />
+            <circle class="branch-joint joint-end" />
+          </g>
+          <g class="branch-group" id="branch-3">
+            <path class="branch-path" />
+            <circle class="branch-joint joint-start" />
+            <circle class="branch-joint joint-end" />
+          </g>
+          <g class="branch-group" id="branch-4">
+            <path class="branch-path" />
+            <circle class="branch-joint joint-start" />
+            <circle class="branch-joint joint-end" />
+          </g>
+        </g>
+      </svg>
+
+      <!-- Spatial HUD: Refined Compact Floating Cards with Branch Hands -->
+      <div class="hero-floating-hud">
+
+        <!-- 1. Float from LEFT: Name & Core Badge -->
+        <div class="hud-card hud-left-1 sleek-glass" id="hud-name">
+          <!-- Mechanical Branch Hand Docking Claw -->
+          <div class="branch-hand hand-right">
+            <span class="hand-claw"></span>
+            <span class="hand-led"></span>
+          </div>
+
+          <div class="badge-pill">
+            <span class="badge-icon">⚡</span>
+            <span>Software & AI Engineer • Cyber B.Tech</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="kinetic-line">Abdulquayyum</span>
+            <span class="kinetic-line gradient-text">Oyedotun</span>
+          </h1>
+          <div class="hud-sub-label">Ibadan, Nigeria • AFEX Backend Operations</div>
+        </div>
+
+        <!-- 2. Float from RIGHT: Cipher Tagline & Terminal HUD -->
+        <div class="hud-card hud-right-1 sleek-glass" id="hud-cipher">
+          <!-- Mechanical Branch Hand Docking Claw -->
+          <div class="branch-hand hand-left">
+            <span class="hand-claw"></span>
+            <span class="hand-led"></span>
+          </div>
+
+          <div class="hud-card-header">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+            </div>
+            <span class="hud-card-title">SYSTEM STATUS</span>
+            <span class="hud-card-live">● ACTIVE</span>
+          </div>
+          <div class="cipher-tagline-container">
+            <span class="terminal-prefix">&gt; </span>
+            <span id="cipher-role" class="cipher-role">CORE INFRASTRUCTURE AT AFEX</span>
+            <span class="terminal-cursor">_</span>
+          </div>
+          <div class="hud-tags-row">
+            <span>LangGraph</span>
+            <span>FastAPI</span>
+            <span>Django</span>
+            <span>PostgreSQL</span>
+          </div>
+        </div>
+
+        <!-- 3. Float from LEFT: Bio Statement & Architecture Philosophy -->
+        <div class="hud-card hud-left-2 sleek-glass" id="hud-bio">
+          <!-- Mechanical Branch Hand Docking Claw -->
+          <div class="branch-hand hand-right">
+            <span class="hand-claw"></span>
+            <span class="hand-led"></span>
+          </div>
+
+          <div class="hud-chip-label">CORE FOCUS</div>
+          <p class="hero-bio">
+            Engineering robust backend architectures, distributed financial payment systems, 
+            and production-grade autonomous AI agent loops with LangChain & LangGraph. 
+            Grounded in Cybersecurity to guarantee security-first delivery.
+          </p>
+        </div>
+
+        <!-- 4. Float from RIGHT: Live Agent Telemetry & Key Metrics -->
+        <div class="hud-card hud-right-2 sleek-glass" id="hud-telemetry">
+          <!-- Mechanical Branch Hand Docking Claw -->
+          <div class="branch-hand hand-left">
+            <span class="hand-claw"></span>
+            <span class="hand-led"></span>
+          </div>
+
+          <div class="hud-telemetry-header">
+            <span class="hud-telemetry-icon">🧠</span>
+            <div>
+              <div class="hud-telemetry-title">LangGraph ReAct Agent</div>
+              <div class="hud-telemetry-sub">StateGraph • Tool Calling (Jira)</div>
+            </div>
+          </div>
+          <div class="hud-stats-grid">
+            <div class="hud-stat-box">
+              <span class="hud-stat-num">1,500+</span>
+              <span class="hud-stat-lbl">Webhooks/s</span>
+            </div>
+            <div class="hud-stat-box">
+              <span class="hud-stat-num">0%</span>
+              <span class="hud-stat-lbl">Double-Spend</span>
+            </div>
+            <div class="hud-stat-box">
+              <span class="hud-stat-num">8+</span>
+              <span class="hud-stat-lbl">Core Systems</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Float from BOTTOM: Action Dock & Navigation CTAs -->
+        <div class="hud-card hud-bottom-1 sleek-glass" id="hud-actions">
+          <!-- Mechanical Branch Hand Docking Claw -->
+          <div class="branch-hand hand-top">
+            <span class="hand-claw"></span>
+            <span class="hand-led"></span>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-sm btn-primary magnetic-btn">
+              <span>Explore Projects</span>
+              <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l10-10M17 7v10H7"/></svg>
+            </a>
+            <button class="btn btn-sm btn-secondary magnetic-btn copy-btn" data-copy="abdulquayyumoyedotun@gmail.com">
+              <span>Copy Email</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+            <a href="https://github.com/olamicreas" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost magnetic-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com/in/abdulquayyum-oyedotun-ab2440227" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost magnetic-btn">
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Pinned Scrub Controller -->
+      <div class="hero-scrub-bar sleek-glass">
+        <div class="scrub-steps">
+          <button class="scrub-step-btn active" data-step="0">
+            <span class="step-num">01</span>
+            <span class="step-name">Identity</span>
+          </button>
+          <button class="scrub-step-btn" data-step="1">
+            <span class="step-num">02</span>
+            <span class="step-name">Cipher HUD</span>
+          </button>
+          <button class="scrub-step-btn" data-step="2">
+            <span class="step-num">03</span>
+            <span class="step-name">Architecture</span>
+          </button>
+          <button class="scrub-step-btn" data-step="3">
+            <span class="step-num">04</span>
+            <span class="step-name">Telemetry</span>
+          </button>
+        </div>
+        <div class="scrub-track">
+          <div class="scrub-fill" id="scrub-fill"></div>
+        </div>
+        <div class="scrub-hint">
+          <span class="mouse-icon">⚡</span>
+          <span>Scroll to deploy branch nodes & explore systems</span>
+          <span class="scroll-arrow-pulse">↓</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Main Container for the Rest of the Portfolio -->
+  <main class="main-container">
+
+    <!-- METRICS TICKER -->
+    <section class="metrics-ticker sleek-glass" data-aos="fade-up" data-aos-duration="700">
+      <div class="metric-item" data-aos="fade-up" data-aos-delay="100">
+        <span class="metric-num">8+</span>
+        <span class="metric-label">Production Backend Systems Built</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric-item" data-aos="fade-up" data-aos-delay="200">
+        <span class="metric-num">90%</span>
+        <span class="metric-label">Student Course Completion Mentored</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric-item" data-aos="fade-up" data-aos-delay="300">
+        <span class="metric-num">B.Tech</span>
+        <span class="metric-label">Cybersecurity Degree (LAUTECH)</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric-item" data-aos="fade-up" data-aos-delay="400">
+        <span class="metric-num">AFEX</span>
+        <span class="metric-label">Enterprise Backend Engineer</span>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="700">
+        <div class="section-tag">PORTFOLIO WORK</div>
+        <h2 class="section-title">Engineered Systems & Featured Projects</h2>
+        <p class="section-desc">
+          Full-stack payment backends, autonomous enterprise AI workflows, media processors, and client booking platforms.
+        </p>
+
+        <!-- Project Filter Tabs -->
+        <div class="filter-bar" data-aos="fade-up" data-aos-delay="150">
+          <button class="filter-tab active" data-filter="all">All Projects (8)</button>
+          <button class="filter-tab" data-filter="fintech">Fintech & Payments</button>
+          <button class="filter-tab" data-filter="ai">AI & Agentic Systems</button>
+          <button class="filter-tab" data-filter="fullstack">Full-Stack & Platforms</button>
+          <button class="filter-tab" data-filter="security">Security & Growth</button>
+        </div>
+      </div>
+
+      <!-- Projects Bento Grid with 3D Tilt -->
+      <div class="projects-grid">
+
+        <!-- 1. NGNflow -->
+        <article class="project-card sleek-glass tilt-card" data-category="fintech" data-id="ngnflow" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <span class="category-pill fintech">Fintech Infrastructure</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">NGNflow</h3>
+          <p class="project-excerpt">
+            High-throughput Nigerian Naira (NGN) payment and payout orchestration engine with automated webhook reconciliation, instant settlement routing, and idempotency guarantees.
+          </p>
+          <div class="tech-stack-pills">
+            <span>Python</span>
+            <span>FastAPI</span>
+            <span>PostgreSQL</span>
+            <span>Redis</span>
+            <span>Webhooks</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-text open-modal-btn">Inspect Architecture →</button>
+          </div>
+        </article>
+
+        <!-- 2. finflow -->
+        <article class="project-card sleek-glass tilt-card" data-category="ai" data-id="finflow" data-aos="fade-up" data-aos-delay="150">
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <span class="category-pill ai">Autonomous AI</span>
+            <span class="project-year">2025</span>
+          </div>
+          <h3 class="project-title">finflow</h3>
+          <p class="project-excerpt">
+            Agentic corporate financial intelligence platform. Leverages LangGraph ReAct agents to autonomously ingest invoices, reconcile bank records, and predict cashflow burn rates.
+          </p>
+          <div class="tech-stack-pills">
+            <span>LangGraph</span>
+            <span>FastAPI</span>
+            <span>Python</span>
+            <span>ReAct Loop</span>
+            <span>React</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-text open-modal-btn">Inspect Architecture →</button>
+          </div>
+        </article>
+
+        <!-- 3. PixHD -->
+        <article class="project-card sleek-glass tilt-card" data-category="fullstack" data-id="pixhd" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <span class="category-pill fullstack">Media Microservice</span>
+            <span class="project-year">2025</span>
+          </div>
+          <h3 class="project-title">PixHD</h3>
+          <p class="project-excerpt">
+            GPU-accelerated high-fidelity image optimization and transformation pipeline. Delivers real-time neural upscaling, modern format transcoding (WebP/AVIF), and edge caching.
+          </p>
+          <div class="tech-stack-pills">
+            <span>Python</span>
+            <span>FastAPI</span>
+            <span>OpenCV</span>
+            <span>Cloudflare R2</span>
+            <span>Docker</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-text open-modal-btn">Inspect Architecture →</button>
+          </div>
+        </article>
+
+        <!-- 4. Hence -->
+        <article class="project-card sleek-glass tilt-card" data-category="fullstack" data-id="hence" data-aos="fade-up" data-aos-delay="250">
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <span class="category-pill fullstack">Enterprise SaaS</span>
+            <span class="project-year">2025</span>
+          </div>
+          <h3 class="project-title">Hence</h3>
+          <p class="project-excerpt">
+            Modern enterprise workflow execution platform with real-time state synchronization, granular role-based access control (RBAC), and immutable audit logs.
+          </p>
+          <div class="tech-stack-pills">
+            <span>Django</span>
+            <span>REST API</span>
+            <span>WebSockets</span>
+            <span>PostgreSQL</span>
+            <span>Redis</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-text open-modal-btn">Inspect Architecture →</button>
+          </div>
+        </article>
+
+        <!-- 5. Volta (Taxi Booking App Like Uber) -->
+        <article class="project-card sleek-glass tilt-card" data-category="fullstack" data-id="volta" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <span class="category-pill fullstack">On-Demand Mobility (Uber-Like)</span>
+            <span class="project-year">2024</span>
+          </div>
+          <h3 class="project-title">Volta</h3>
+          <p class="project-excerpt">
+            On-demand taxi and ride-booking platform like Uber featuring real-time driver/rider geolocation tracking, automated dispatch matching, distance/traffic fare estimation, and WebSocket trip lifecycle management.
+          </p>
+          <div class="tech-stack-pills">
+            <span>Python</span>
+            <span>FastAPI</span>
+            <span>WebSockets</span>
+            <span>PostGIS</span>
+            <span>Redis Geo</span>
+            <span>Google Maps API</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-text open-modal-btn">Inspect Architecture →</button>
+          </div>
+        </article>
+
+        <!-- 6. Ridgenooks (Properties Booking App) -->
+        <article class="project-card sleek-glass tilt-card" data-category="fullstack" data-id="ridgenooks" data-aos="fade-up" data-aos-delay="150">
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <span class="category-pill fullstack">Property & Hospitality</span>
+            <span class="project-year">2024</span>
+          </div>
+          <h3 class="project-title">Ridgenooks</h3>
+          <p class="project-excerpt">
+            Full-stack property booking and short-let apartment reservation platform featuring atomic calendar reservation locks, multi-currency card checkouts, and automated guest itinerary dispatch.
+          </p>
+          <div class="tech-stack-pills">
+            <span>Python</span>
+            <span>Django</span>
+            <span>PostgreSQL</span>
+            <span>Stripe/Paystack</span>
+            <span>JavaScript</span>
+            <span>Redis</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-text open-modal-btn">Inspect Architecture →</button>
+          </div>
+        </article>
+
+        <!-- 7. Refandearn Referral System -->
+        <article class="project-card sleek-glass tilt-card" data-category="fintech security" data-id="refandearn" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <span class="category-pill fintech">Growth & Security</span>
+            <span class="project-year">2024</span>
+          </div>
+          <h3 class="project-title">Refandearn</h3>
+          <p class="project-excerpt">
+            High-concurrency multi-tier referral tracking system featuring cryptographic anti-fraud verification, IP cluster deduplication, and automated reward disbursement.
+          </p>
+          <div class="tech-stack-pills">
+            <span>FastAPI</span>
+            <span>Redis Streams</span>
+            <span>PostgreSQL</span>
+            <span>Crypto Hash</span>
+            <span>Python</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-text open-modal-btn">Inspect Architecture →</button>
+          </div>
+        </article>
+
+        <!-- 8. Enterprise AI Agent Server -->
+        <article class="project-card sleek-glass tilt-card" data-category="ai" data-id="enterprise-ai" data-aos="fade-up" data-aos-delay="250">
+          <div class="card-glow"></div>
+          <div class="project-header">
+            <span class="category-pill ai">Enterprise AI</span>
+            <span class="project-year">2024</span>
+          </div>
+          <h3 class="project-title">Enterprise AI Agent Server</h3>
+          <p class="project-excerpt">
+            Autonomous multi-step agent server using LangGraph state machines, conditional routing, and external tool execution (including Jira API query & bug reporting).
+          </p>
+          <div class="tech-stack-pills">
+            <span>LangChain</span>
+            <span>LangGraph</span>
+            <span>FastAPI</span>
+            <span>Jira API</span>
+            <span>Python</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-text open-modal-btn">Inspect Architecture →</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE MODAL -->
+    <div id="project-modal" class="modal-backdrop">
+      <div class="modal-content sleek-glass">
+        <div class="ios-sheet-handle"></div>
+        <button class="modal-close-btn" id="modal-close">&times;</button>
+        <div id="modal-body">
+          <!-- Dynamically filled by app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE & TIMELINE -->
+    <section id="experience" class="section">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="700">
+        <div class="section-tag">CAREER MILESTONES</div>
+        <h2 class="section-title">Software & AI Engineering Experience</h2>
+        <p class="section-desc">
+          Track record across enterprise commodity exchanges, client platforms, and technical mentoring.
+        </p>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Experience 1: AFEX -->
+        <div class="timeline-item" data-aos="fade-left" data-aos-duration="700">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content sleek-glass">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Backend Engineer</h3>
+                <span class="timeline-company">AFEX • Ibadan, Nigeria</span>
+              </div>
+              <span class="timeline-badge">June 2026 — Present</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Developing, maintaining, and optimizing backend services and RESTful APIs using Python (Django and FastAPI) to support core platform operations.</li>
+              <li>Collaborating with cross-functional engineering teams to design resilient database schemas, integrate external APIs, and uphold strict security benchmarks.</li>
+              <li>Implementing asynchronous processing and robust error handling to guarantee reliable transaction execution across commodity operations.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>Django</span>
+              <span>RESTful APIs</span>
+              <span>PostgreSQL</span>
+              <span>Clean Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 2: Independent & Client Engineering -->
+        <div class="timeline-item" data-aos="fade-right" data-aos-duration="700">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content sleek-glass">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Software & AI Engineer</h3>
+                <span class="timeline-company">Independent & Client Engineering</span>
+              </div>
+              <span class="timeline-badge">Jan 2024 — Present</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Engineered a production-ready enterprise agent server using LangChain, LangGraph, and FastAPI with ReAct loops, conditional routing, and Jira integration.</li>
+              <li>Architected high-concurrency client platforms including Volta (on-demand taxi & ride-booking platform with real-time GPS dispatch) and Ridgenooks (properties & short-let reservation platform).</li>
+              <li>Engineered Refandearn, a multi-tier referral tracking engine featuring cryptographic anti-fraud verification and IP deduplication.</li>
+              <li>Built and optimized scalable REST backends and microservices with Django and FastAPI featuring secure token authentication and async processing.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>LangGraph</span>
+              <span>LangChain</span>
+              <span>FastAPI</span>
+              <span>Python</span>
+              <span>WebSockets</span>
+              <span>Cybersecurity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 3: Instructor & Mentor -->
+        <div class="timeline-item" data-aos="fade-left" data-aos-duration="700">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content sleek-glass">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Python Programming Instructor & Technical Mentor</h3>
+                <span class="timeline-company">Cybersecurity Student Association, LAUTECH</span>
+              </div>
+              <span class="timeline-badge">Jan 2023 — Present</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Designed and led weekly 2-hour workshops on Python fundamentals, algorithms, control flow, and I/O to cohorts of 10 to 15 students culminating in capstone builds.</li>
+              <li>Conducted 1-on-1 code reviews and diagnostic assessments, increasing course completion rates from 60% to 90%.</li>
+              <li>Awarded the prestigious "Outstanding Mentor" recognition (2023) by the association executive committee.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>Technical Mentoring</span>
+              <span>Curriculum Design</span>
+              <span>Code Reviews</span>
+              <span>Python Instruction</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CORE CAPABILITIES (BENTO GRID) -->
+    <section id="skills" class="section">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="700">
+        <div class="section-tag">TECHNICAL ARSENAL</div>
+        <h2 class="section-title">Core Engineering Capabilities</h2>
+        <p class="section-desc">
+          Structured across backend architecture, autonomous agent design patterns, and security principles.
+        </p>
+      </div>
+
+      <div class="bento-skills-grid">
+
+        <!-- Bento 1: Autonomous AI Systems -->
+        <div class="bento-skill-card sleek-glass col-2" data-aos="fade-up" data-aos-delay="100">
+          <div class="skill-icon">🧠</div>
+          <h3>Autonomous Enterprise AI Systems</h3>
+          <p>
+            Moving beyond basic prompt completion to architect resilient, stateful AI workflows. 
+            Designing deterministic state graphs with LangGraph, cyclical ReAct agent loops, conditional routing, 
+            memory persistence, and automated tool calling.
+          </p>
+          <div class="skill-chips">
+            <span>LangGraph</span>
+            <span>LangChain</span>
+            <span>ReAct Loops</span>
+            <span>State Management</span>
+            <span>Conditional Routing</span>
+            <span>Tool Calling</span>
+          </div>
+        </div>
+
+        <!-- Bento 2: Backend Architecture -->
+        <div class="bento-skill-card sleek-glass" data-aos="fade-up" data-aos-delay="200">
+          <div class="skill-icon">⚙️</div>
+          <h3>Backend & API Systems</h3>
+          <p>
+            Building high-throughput, low-latency microservices with clean relational schemas and asynchronous event loops.
+          </p>
+          <div class="skill-chips">
+            <span>FastAPI</span>
+            <span>Django</span>
+            <span>Flask</span>
+            <span>PostgreSQL</span>
+            <span>Redis</span>
+            <span>REST APIs</span>
+          </div>
+        </div>
+
+        <!-- Bento 3: Cybersecurity Specialty -->
+        <div class="bento-skill-card sleek-glass" data-aos="fade-up" data-aos-delay="100">
+          <div class="skill-icon">🛡️</div>
+          <h3>Security-Aware Development</h3>
+          <p>
+            Leveraging formal Cybersecurity training to prevent vulnerabilities: secure prompt injection defense, JWT tokens, entropy analysis, and sanitization.
+          </p>
+          <div class="skill-chips">
+            <span>Prompt Defense</span>
+            <span>Entropy Analysis</span>
+            <span>Auth & RBAC</span>
+            <span>Input Validation</span>
+            <span>OWASP Standards</span>
+          </div>
+        </div>
+
+        <!-- Bento 4: Engineering Practices & Languages -->
+        <div class="bento-skill-card sleek-glass col-2" data-aos="fade-up" data-aos-delay="200">
+          <div class="skill-icon">💻</div>
+          <h3>Languages & Engineering Tooling</h3>
+          <p>
+            Clean code craftsmanship backed by agile delivery, Git version control, Linux CLI environments, and responsive front-end integration.
+          </p>
+          <div class="skill-chips">
+            <span>Python (Expert)</span>
+            <span>JavaScript (ES6+)</span>
+            <span>HTML5 & CSS3</span>
+            <span>SQL</span>
+            <span>Git / GitHub</span>
+            <span>Linux CLI</span>
+            <span>Code Review</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION & HONORS -->
+    <section id="education" class="section">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="700">
+        <div class="section-tag">ACADEMIC FOUNDATION</div>
+        <h2 class="section-title">Education, Honors & Talks</h2>
+      </div>
+
+      <div class="education-grid">
+        <!-- Degree -->
+        <div class="edu-card sleek-glass" data-aos="fade-right" data-aos-delay="100">
+          <div class="edu-badge">DEGREE</div>
+          <h3>Bachelor of Technology (B.Tech.) in Cyber Security</h3>
+          <div class="edu-school">Ladoke Akintola University of Technology (LAUTECH)</div>
+          <div class="edu-date">Graduated: September 2025 • Ogbomoso, Nigeria</div>
+          <p class="edu-desc">
+            Rigorous coursework in software engineering, algorithms & data structures, object-oriented design, 
+            cryptography, database systems, and computer network security.
+          </p>
+        </div>
+
+        <!-- Honors & Speaking -->
+        <div class="edu-card sleek-glass" data-aos="fade-left" data-aos-delay="200">
+          <div class="edu-badge">HONORS & SPEAKING</div>
+          <ul class="honors-list">
+            <li>
+              <strong>"Outstanding Mentor" Award (2023)</strong>
+              <span>Awarded by LAUTECH Cybersecurity Student Association Executive Committee.</span>
+            </li>
+            <li>
+              <strong>Python Programming Teaching Certification</strong>
+              <span>Certified instructor for foundational and intermediate computer science cohorts.</span>
+            </li>
+            <li>
+              <strong>Lightning Talk Presenter — LAUTECH Tech Week 2024</strong>
+              <span>Delivered <em>"Intro to Secure Coding"</em>, presenting practical defense-in-depth engineering habits.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & DIRECT CONNECT -->
+    <section id="contact" class="section contact-section">
+      <div class="contact-box sleek-glass" data-aos="zoom-in-up" data-aos-duration="750">
+        <div class="section-tag">GET IN TOUCH</div>
+        <h2 class="contact-title">Let's Build Something Exceptional</h2>
+        <p class="contact-sub">
+          Currently open to Backend, AI Engineering, and Enterprise Agent workflow opportunities.
+        </p>
+
+        <div class="contact-methods">
+          <!-- Email Copy Pill -->
+          <div class="contact-pill copy-btn" data-copy="abdulquayyumoyedotun@gmail.com" data-aos="fade-up" data-aos-delay="100">
+            <span class="pill-icon">✉️</span>
+            <div class="pill-info">
+              <span class="pill-label">Email</span>
+              <span class="pill-val">abdulquayyumoyedotun@gmail.com</span>
+            </div>
+            <span class="copy-hint">Copy</span>
+          </div>
+
+          <!-- Phone Copy Pill -->
+          <div class="contact-pill copy-btn" data-copy="+2348086326046" data-aos="fade-up" data-aos-delay="150">
+            <span class="pill-icon">📞</span>
+            <div class="pill-info">
+              <span class="pill-label">Phone / WhatsApp</span>
+              <span class="pill-val">+234 808 632 6046</span>
+            </div>
+            <span class="copy-hint">Copy</span>
+          </div>
+
+          <!-- GitHub -->
+          <a href="https://github.com/olamicreas" target="_blank" rel="noopener noreferrer" class="contact-pill" data-aos="fade-up" data-aos-delay="200">
+            <span class="pill-icon">🐙</span>
+            <div class="pill-info">
+              <span class="pill-label">GitHub</span>
+              <span class="pill-val">github.com/olamicreas</span>
+            </div>
+            <span class="copy-hint">Visit ↗</span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/in/abdulquayyum-oyedotun-ab2440227" target="_blank" rel="noopener noreferrer" class="contact-pill" data-aos="fade-up" data-aos-delay="250">
+            <span class="pill-icon">💼</span>
+            <div class="pill-info">
+              <span class="pill-label">LinkedIn</span>
+              <span class="pill-val">Abdulquayyum Oyedotun</span>
+            </div>
+            <span class="copy-hint">Visit ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer sleek-glass">
+    <div class="footer-content" data-aos="fade-up" data-aos-duration="600">
+      <div class="footer-brand">
+        <span class="mono-symbol">&lt;</span>Abdulquayyum Oyedotun<span class="mono-symbol">/&gt;</span>
+      </div>
+      <p class="footer-copy">
+        Crafted with High-Performance WebGL, Kinetic Typography & Sleek Architecture • Nigeria
+      </p>
+      <a href="#hero" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

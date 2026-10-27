@@ -729,8 +729,8 @@ function initHero2Dto3D() {
     const t = time * 0.001;
     uniforms.uTime.value = t;
 
-    // Smooth lerp for scroll progress
-    currentProgress += (targetProgress - currentProgress) * 0.12;
+    // Smooth lerp for scroll progress with gentle inertia
+    currentProgress += (targetProgress - currentProgress) * 0.065;
 
     // Pass smooth displacement uniform to GPU vertex shader
     uniforms.uDisplacement.value = currentProgress;

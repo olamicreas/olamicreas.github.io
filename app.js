@@ -618,54 +618,56 @@ function initHero2Dto3D() {
       if (isMobile) {
         // MOBILE PORTRAIT BRANCHING (Dedicated non-overlapping corridors)
         if (index === 0) {
-          // Card 1: Name & Title (Top-most card, claw on LEFT edge)
+          // Card 1: Name & Title (Top-Left quadrant, claw on LEFT edge)
           // Starts from stage left edge, sweeps up through the left gutter into Card 1 left claw
           startX = stageRect.left - containerRect.left + 8;
-          startY = stageRect.top - containerRect.top + stageRect.height * 0.35;
+          startY = stageRect.top - containerRect.top + stageRect.height * 0.25;
 
-          const ctrlX1 = Math.min(startX - 40, endX - 16);
+          const ctrlX1 = Math.min(startX - 35, endX - 14);
           const ctrlY1 = startY - (startY - endY) * 0.45;
-          const ctrlX2 = endX - 24;
+          const ctrlX2 = endX - 20;
           const ctrlY2 = endY + (startY - endY) * 0.25;
           pathD = `M ${startX} ${startY} C ${ctrlX1} ${ctrlY1}, ${ctrlX2} ${ctrlY2}, ${endX} ${endY}`;
         } else if (index === 1) {
-          // Card 2: Cipher HUD (Directly above stage, claw on BOTTOM edge)
-          // Starts from stage top-right, rises vertically into Card 2 bottom claw
-          startX = stageRect.left - containerRect.left + stageRect.width * 0.62;
-          startY = stageRect.top - containerRect.top + 8;
+          // Card 2: Cipher HUD (Top-Right quadrant, claw on RIGHT edge)
+          // Starts from stage right-top, sweeps up through the right gutter into Card 2 right claw
+          startX = stageRect.right - containerRect.left - 8;
+          startY = stageRect.top - containerRect.top + stageRect.height * 0.25;
 
-          const ctrlY1 = startY - (startY - endY) * 0.5;
-          const ctrlY2 = endY + (startY - endY) * 0.5;
-          pathD = `M ${startX} ${startY} C ${startX} ${ctrlY1}, ${endX} ${ctrlY2}, ${endX} ${endY}`;
+          const ctrlX1 = Math.max(startX + 35, endX + 14);
+          const ctrlY1 = startY - (startY - endY) * 0.45;
+          const ctrlX2 = endX + 20;
+          const ctrlY2 = endY + (startY - endY) * 0.25;
+          pathD = `M ${startX} ${startY} C ${ctrlX1} ${ctrlY1}, ${ctrlX2} ${ctrlY2}, ${endX} ${endY}`;
         } else if (index === 2) {
           // Card 3: Engineering Bio (Directly below stage, claw on TOP edge)
           // Starts from stage bottom-center, extends down into Card 3 top claw
-          startX = stageRect.left - containerRect.left + stageRect.width * 0.38;
-          startY = stageRect.bottom - containerRect.top - 8;
+          startX = stageRect.left - containerRect.left + stageRect.width * 0.5;
+          startY = stageRect.bottom - containerRect.top - 6;
 
           const ctrlY1 = startY + (endY - startY) * 0.5;
           const ctrlY2 = endY - (endY - startY) * 0.5;
           pathD = `M ${startX} ${startY} C ${startX} ${ctrlY1}, ${endX} ${ctrlY2}, ${endX} ${endY}`;
         } else if (index === 3) {
-          // Card 4: Telemetry (Below Card 3, claw on RIGHT edge)
+          // Card 4: Telemetry (Bottom-Right quadrant, claw on RIGHT edge)
           // Starts from stage right edge, sweeps down through the right gutter into Card 4 right claw
           startX = stageRect.right - containerRect.left - 8;
-          startY = stageRect.top - containerRect.top + stageRect.height * 0.65;
+          startY = stageRect.bottom - containerRect.top - stageRect.height * 0.25;
 
-          const ctrlX1 = Math.max(startX + 40, endX + 16);
+          const ctrlX1 = Math.max(startX + 35, endX + 14);
           const ctrlY1 = startY + (endY - startY) * 0.45;
-          const ctrlX2 = endX + 24;
+          const ctrlX2 = endX + 20;
           const ctrlY2 = endY - (endY - startY) * 0.25;
           pathD = `M ${startX} ${startY} C ${ctrlX1} ${ctrlY1}, ${ctrlX2} ${ctrlY2}, ${endX} ${endY}`;
         } else if (index === 4) {
-          // Card 5: Actions dock (Bottom-most card, claw on LEFT edge)
+          // Card 5: Actions dock (Bottom-Left quadrant, claw on LEFT edge)
           // Starts from stage bottom-left, sweeps down through the left gutter into Card 5 left claw
-          startX = stageRect.left - containerRect.left + 10;
-          startY = stageRect.bottom - containerRect.top - 10;
+          startX = stageRect.left - containerRect.left + 8;
+          startY = stageRect.bottom - containerRect.top - stageRect.height * 0.25;
 
-          const ctrlX1 = Math.min(startX - 40, endX - 16);
+          const ctrlX1 = Math.min(startX - 35, endX - 14);
           const ctrlY1 = startY + (endY - startY) * 0.45;
-          const ctrlX2 = endX - 24;
+          const ctrlX2 = endX - 20;
           const ctrlY2 = endY - (endY - startY) * 0.25;
           pathD = `M ${startX} ${startY} C ${ctrlX1} ${ctrlY1}, ${ctrlX2} ${ctrlY2}, ${endX} ${endY}`;
         }

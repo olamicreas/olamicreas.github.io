@@ -1049,7 +1049,13 @@ function initAOS() {
     threshold: 0.02
   });
 
-  elements.forEach(el => observer.observe(el));
+  elements.forEach(el => {
+    const delay = el.getAttribute('data-aos-delay');
+    if (delay) {
+      el.style.transitionDelay = `${parseInt(delay, 10) * 0.7}ms`;
+    }
+    observer.observe(el);
+  });
 }
 
 // ==========================================================================

@@ -593,7 +593,6 @@ function initHero2Dto3D() {
     };
   });
 
-  const floatingHud = document.querySelector('.hero-floating-hud');
   const scrollIndicator = document.getElementById('hero-scroll-indicator');
 
   // Interactive Click on Scroll Prompter
@@ -607,14 +606,11 @@ function initHero2Dto3D() {
     });
   }
 
-  // Precompute and anchor branch vector paths in stable resting coordinates (Zero reflows per frame!)
-  function updateBranchGeometry() {
-    if (!branchesLayer || !canvasWrapper || !stickyContainer || !floatingHud) {
+  // Live Sub-Pixel Branch Hands Attachment
+  function renderBranchHands(progress) {
+    if (!branchesLayer || !canvasWrapper || !stickyContainer) {
       return;
     }
-
-    // Momentarily ensure cards are measured in their docked resting positions
-    floatingHud.classList.add('docked-measurement');
 
     const containerRect = stickyContainer.getBoundingClientRect();
     const stageRect = canvasWrapper.getBoundingClientRect();
@@ -625,6 +621,7 @@ function initHero2Dto3D() {
 
       const clawEl = el.card.querySelector('.hand-claw') || el.card.querySelector('.branch-hand');
       const clawRect = clawEl ? clawEl.getBoundingClientRect() : el.card.getBoundingClientRect();
+      const isActive = progress >= el.threshold;
 
       // Exact sub-pixel center of the docking claw on the target card
       const endX = clawRect.left - containerRect.left + clawRect.width * 0.5;
@@ -635,6 +632,7 @@ function initHero2Dto3D() {
       if (isMobile) {
         // MOBILE PORTRAIT BRANCHING (Dedicated non-overlapping corridors)
         if (index === 0) {
+          // Card 1: Name & Title (Top-Left quadrant, claw on LEFT edge)
           startX = stageRect.left - containerRect.left + 8;
           startY = stageRect.top - containerRect.top + stageRect.height * 0.25;
 
@@ -644,6 +642,7 @@ function initHero2Dto3D() {
           const ctrlY2 = endY + (startY - endY) * 0.25;
           pathD = `M ${startX} ${startY} C ${ctrlX1} ${ctrlY1}, ${ctrlX2} ${ctrlY2}, ${endX} ${endY}`;
         } else if (index === 1) {
+          // Card 2: Cipher HUD (Top-Right quadrant, claw on RIGHT edge)
           startX = stageRect.right - containerRect.left - 8;
           startY = stageRect.top - containerRect.top + stageRect.height * 0.25;
 
@@ -653,6 +652,7 @@ function initHero2Dto3D() {
           const ctrlY2 = endY + (startY - endY) * 0.25;
           pathD = `M ${startX} ${startY} C ${ctrlX1} ${ctrlY1}, ${ctrlX2} ${ctrlY2}, ${endX} ${endY}`;
         } else if (index === 2) {
+          // Card 3: Engineering Bio (Directly below stage, claw on TOP edge)
           startX = stageRect.left - containerRect.left + stageRect.width * 0.5;
           startY = stageRect.bottom - containerRect.top - 6;
 
@@ -660,6 +660,7 @@ function initHero2Dto3D() {
           const ctrlY2 = endY - (endY - startY) * 0.5;
           pathD = `M ${startX} ${startY} C ${startX} ${ctrlY1}, ${endX} ${ctrlY2}, ${endX} ${endY}`;
         } else if (index === 3) {
+          // Card 4: Telemetry (Bottom-Right quadrant, claw on RIGHT edge)
           startX = stageRect.right - containerRect.left - 8;
           startY = stageRect.bottom - containerRect.top - stageRect.height * 0.25;
 
@@ -669,6 +670,7 @@ function initHero2Dto3D() {
           const ctrlY2 = endY - (endY - startY) * 0.25;
           pathD = `M ${startX} ${startY} C ${ctrlX1} ${ctrlY1}, ${ctrlX2} ${ctrlY2}, ${endX} ${endY}`;
         } else if (index === 4) {
+          // Card 5: Actions dock (Bottom-Left quadrant, claw on LEFT edge)
           startX = stageRect.left - containerRect.left + 8;
           startY = stageRect.bottom - containerRect.top - stageRect.height * 0.25;
 
@@ -717,40 +719,19 @@ function initHero2Dto3D() {
       }
 
       el.path.setAttribute('d', pathD);
+      el.path.classList.toggle('active', isActive);
 
       if (el.jointStart) {
         el.jointStart.setAttribute('cx', startX);
         el.jointStart.setAttribute('cy', startY);
+        el.jointStart.classList.toggle('active', isActive);
       }
       if (el.jointEnd) {
         el.jointEnd.setAttribute('cx', endX);
         el.jointEnd.setAttribute('cy', endY);
-      }
-    });
-
-    floatingHud.classList.remove('docked-measurement');
-  }
-
-  // Pure state toggling during render loop - ZERO layout thrashing!
-  function updateBranchState(progress) {
-    branchElements.forEach((el) => {
-      if (!el.path) return;
-      const isActive = progress >= el.threshold;
-      el.path.classList.toggle('active', isActive);
-
-      if (el.jointStart) {
-        el.jointStart.classList.toggle('active', isActive);
-      }
-      if (el.jointEnd) {
         el.jointEnd.classList.toggle('active', isActive);
       }
     });
-  }
-
-  // Initial calculation of stable branch paths
-  updateBranchGeometry();
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(updateBranchGeometry);
   }
 
   // Main Render Loop with Separate Floating In Choreography & Attached Branch Hands
@@ -818,8 +799,8 @@ function initHero2Dto3D() {
       else hudActions.classList.remove('visible');
     }
 
-    // Update Dynamic Branch Hands Attaching to Cards (Zero reflows!)
-    updateBranchState(currentProgress);
+    // Update Dynamic Branch Hands Attaching to Cards
+    renderBranchHands(currentProgress);
 
     // Update Scrub Buttons active state
     let activeStep = 0;
@@ -843,7 +824,6 @@ function initHero2Dto3D() {
     camera.aspect = newW / newH;
     camera.updateProjectionMatrix();
     renderer.setSize(newW, newH);
-    updateBranchGeometry();
   });
 }
 
